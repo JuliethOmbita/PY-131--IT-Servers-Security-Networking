@@ -42,12 +42,12 @@ class TestCalculatorMethods(unittest.TestCase):
     def test_average(self):
         self.assertEqual(self.calc.average([3, 3, 4, 10]), 5, "tests average of 5")
         self.assertEqual(self.calc.average([30, 10]), 20, "tests average of 20")
-        self.assertEqual(self.calc.average([15, 45, 30]), 30, "tests average of 45")
+        self.assertEqual(self.calc.average([15, 45, 30]), 30, "tests average of 30")
 
     def test_is_prime(self):
         self.assertTrue(self.calc.is_prime(5))
         self.assertFalse(self.calc.is_prime(10))
-        self.assertTrue(self.calc.is_prime(15))
+        self.assertFalse(self.calc.is_prime(15))
 
 if __name__ == '__main__':
     unittest.main()
