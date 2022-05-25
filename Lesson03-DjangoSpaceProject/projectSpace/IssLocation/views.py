@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from datetime import date
 from django.http import HttpResponse
 from dotenv import dotenv_values
 import requests
 
 
 def say_hello(request):
-    return HttpResponse('hello Julieth')
+    today = date.today()
+    return HttpResponse(f"hello Julieth, {today}")
+
 
 def ISSlocation(request):
     ENV = dotenv_values()
@@ -19,11 +22,12 @@ def ISSlocation(request):
     }
     loc_response = requests.get(ENV['URL_reverse_goe'], params=data)
     if loc_response:
-        location =  f"Over {loc_response.json()['address']['country']}"
-    else: 
+        location = f"Over {loc_response.json()['address']['country']}"
+    else:
         location = "ISS location can't be find"
     resp['location'] = location
     return render(request, "index.html", resp)
+
 
 def humanInSpace(request):
     ENV = dotenv_values()
