@@ -30,11 +30,14 @@ Modify the code to do the following:
 """
 
 from string import ascii_letters
+from collections import Counter
 
 
-class words():
-    """Calculator"""
+class Words():
+    """Words info"""
     vowels = 'aeiou'
+    article = ["in", "at", "on", "of", "to", "is",
+               "a", "an", "or", "by", "the", "as", "and"]
 
     def __init__(self, text):
         self.text = text.lower()
@@ -57,10 +60,19 @@ class words():
         """
         consonants_lst = [sum(1 for i in word if i not in self.vowels)
                           for word in self.text]
-        return dict(zip(self.text, consonants_lst))
+        yield dict(zip(self.text, consonants_lst))
+
+    def count_words_frecuency(self):
+        """
+        get the number of words that are not in a list
+        """
+        words_no_prepositions = [
+            word for word in self.text if word not in self.article]
+        return Counter(words_no_prepositions)
 
 
 if __name__ == '__main__':
-    wd = words('text1.txt')
+    wd = Words('text1.txt')
     print(wd.count_vowel())
     print(wd.count_consonants())
+    print(wd.count_words_frecuency())

@@ -1,8 +1,8 @@
 import pytest
-from words import words
+from words import Words
 
 
 @pytest.fixture
 def word_info_obj():
-    wd = words('text1.txt')
+    wd = Words('text1.txt')
     return wd
