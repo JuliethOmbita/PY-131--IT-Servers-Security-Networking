@@ -33,11 +33,11 @@ from string import ascii_letters
 from collections import Counter
 
 
+vowels = 'aeiou'
+article = ["in", "at", "on", "of", "to", "is",
+            "a", "an", "or", "by", "the", "as", "and"]
 class Words():
     """Words info"""
-    vowels = 'aeiou'
-    article = ["in", "at", "on", "of", "to", "is",
-               "a", "an", "or", "by", "the", "as", "and"]
 
     def __init__(self, text):
         self.text = text.lower()
